@@ -1,0 +1,33 @@
+
+.container{
+    width: 30% !important;
+    margin-top: 5%;
+    padding-top: 2%;
+    padding-bottom: 3%;
+    border-style: solid;
+    border-color: #4B0082;
+    background-color: #ffffff;
+}
+
+.heading{
+    font-family: 'Times New Roman', Times, serif;
+  }
+  .input_value{
+      display: none;
+  }
+
+  .create_team_form{
+      display: flex;
+      justify-content: center;
+  }
+
+  input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    margin: 5px;
+    cursor: pointer;
+}
