@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './index.css';
-import { Button, TextField } from '@material-ui/core';
+import { Button, TextField, Select, MenuItem } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 
@@ -10,64 +10,64 @@ import * as firebase from 'firebase';
 export const CreateTeams = () => {
 
     const [team_name, setTeam_name] = useState('');
-    const [players, setPlayerList] = useState([]);
     const [image, uploadImage] = useState('');
-    const [player_name, setPlayerName] = useState('');
-    const [player_position, setPlayerPosition] = useState('');
+    const [player_name, setPlayerName] = useState([]);
+    const [player_position, setPlayerPosition] = useState([]);
 
 
     const handleChange = event => {
-
-
         if (event.target.name === 'team_name') {
-
             setTeam_name(event.target.value)
         }
         else if (event.target.name === 'image_upload') {
             uploadImage(event.target.files[0])
         }
-        else {
-
-        }
     }
 
     const handleChangePlayers = index => event => {
-        let newArr = [...players];
 
-        if (event.target.name === 'hamza') {
-            setPlayerName(event.target.value)
+        let newPlayerName = [...player_name];
+        let newPlayerPosition = [...player_position];
+
+        if (event.target.name === 'player_name') {
+            newPlayerName[index] = event.target.value;
+            setPlayerName(newPlayerName)
         }
         else {
-            setPlayerPosition(event.target.value)
+            newPlayerPosition[index] = event.target.value;
+            setPlayerPosition(newPlayerPosition)
         }
-        const playerObject = {
-            "name": player_name,
-            "position": player_position
-        }
-
-        newArr[index] = playerObject;
-        setPlayerList(newArr)
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        let players = []
+        let i = 0;
+
+        player_name.map(x => {
+            const playerObject = {
+                "name": x,
+                "position": player_position[i]
+            }
+            console.log("playerObject: " + JSON.stringify(playerObject))
+
+            players[i] = playerObject;
+            i++;
+        })
         const Team = {
             team_name,
             image,
             players
         }
-        console.log("Team: " + JSON.stringify(Team));
         setImage(Team);
-
-
     }
     const setImage = (Team) => {
 
 
 
         var blob = new Blob([image], { type: "image/jpeg" });
-        
-        var storageRef = firebase.storage().ref().child('Teams');
+
+        var storageRef = firebase.storage().ref();
         console.log("image to upload: " + image)
         let uploadTask = storageRef.child('Teams/' + "logo").put(blob);
 
@@ -114,23 +114,25 @@ export const CreateTeams = () => {
                 });
             });
     }
-    const list = ["Name", "Player 2", "Player 3"];
+    const positions = ['captain', 'batsman', 'bowler', 'wicketkeeper']
     return (
+
         <div align="center" className="CreateTeams">
-
             <div className="container">
-
+                <h3>Create Team</h3>
                 <form onSubmit={handleSubmit.bind(this)}>
                     <div>
                         <TextField color='primary' required={true} fullWidth={true} id="standard-basic" label="Team Name" type="text" name="team_name" onChange={handleChange.bind(this)} />
-
                     </div>
 
                     {/* asdf */}
-                    {list.map((player, index) =>
+                    {Array.apply(null, Array(11)).map((player, index) =>
                         <div className="create_team_form">
-                            <TextField color='primary' required={true} fullWidth={true} id="standard-basic" label="name" type="text" name="hamza" onChange={handleChangePlayers(index).bind(this)} />
-                            <TextField color='primary' required={true} fullWidth={true} id="standard-basic" label="position" type="text" name="player_position" onChange={handleChangePlayers(index).bind(this)} />
+
+                            <TextField color='primary' required={true} fullWidth={true} id="standard-basic" label="name" type="text" name="player_name" onChange={handleChangePlayers(index).bind(this)} />
+                            <Select fullWidth={true} id="standard-basic" name="player_position" onChange={handleChangePlayers(index).bind(this)} >
+                                {positions.map(position => (<MenuItem value={position}>{position}</MenuItem>))}
+                            </Select>
                         </div>
                     )}
 
@@ -139,13 +141,9 @@ export const CreateTeams = () => {
                         Upload image
                         </label>
                     <br />
-
                     <Button variant="contained" type="submit" color="primary">Submit</Button>
-
-
                 </form>
                 <br />
-
             </div>
         </div>
     );
