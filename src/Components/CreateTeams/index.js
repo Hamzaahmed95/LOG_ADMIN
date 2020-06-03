@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import './index.css';
 import { Button, TextField, Select, MenuItem } from '@material-ui/core';
-import IconButton from '@material-ui/core/IconButton';
-import PhotoCamera from '@material-ui/icons/PhotoCamera';
-
-import { db } from '../../firebase';
 import * as firebase from 'firebase';
 
 export const CreateTeams = () => {
@@ -13,7 +9,6 @@ export const CreateTeams = () => {
     const [image, uploadImage] = useState('');
     const [player_name, setPlayerName] = useState([]);
     const [player_position, setPlayerPosition] = useState([]);
-
 
     const handleChange = event => {
         if (event.target.name === 'team_name') {
@@ -63,47 +58,37 @@ export const CreateTeams = () => {
     }
     const setImage = (Team) => {
 
-
-
         var blob = new Blob([image], { type: "image/jpeg" });
 
         var storageRef = firebase.storage().ref();
         console.log("image to upload: " + image)
-        let uploadTask = storageRef.child('Teams/' + "logo").put(blob);
+        let uploadTask = storageRef.child('Teams/' + Team.team_name).put(blob);
 
-        // Listen for state changes, errors, and completion of the upload.
-        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
+        uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, 
             function (snapshot) {
-                // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+                
                 let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                 console.log('Upload is ' + progress + '% done');
                 switch (snapshot.state) {
-                    case firebase.storage.TaskState.PAUSED: // or 'paused'
+                    case firebase.storage.TaskState.PAUSED: 
                         console.log('Upload is paused');
                         break;
-                    case firebase.storage.TaskState.RUNNING: // or 'running'
+                    case firebase.storage.TaskState.RUNNING: 
                         console.log('Upload is running');
                         break;
                 }
             }, function (error) {
-
-                // A full list of error codes is available at
-                // https://firebase.google.com/docs/storage/web/handle-errors
                 switch (error.code) {
                     case 'storage/unauthorized':
-                        // User doesn't have permission to access the object
                         break;
 
                     case 'storage/canceled':
-                        // User canceled the upload
                         break;
 
                     case 'storage/unknown':
-                        // Unknown error occurred, inspect error.serverResponse
                         break;
                 }
             }, function () {
-                // Upload completed successfully, now we can get the download URL
                 uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
                     console.log('File available at', downloadURL);
                     Team.image = downloadURL;
@@ -124,8 +109,6 @@ export const CreateTeams = () => {
                     <div>
                         <TextField color='primary' required={true} fullWidth={true} id="standard-basic" label="Team Name" type="text" name="team_name" onChange={handleChange.bind(this)} />
                     </div>
-
-                    {/* asdf */}
                     {Array.apply(null, Array(11)).map((player, index) =>
                         <div className="create_team_form">
 
@@ -135,7 +118,6 @@ export const CreateTeams = () => {
                             </Select>
                         </div>
                     )}
-
                     <input id="file-upload" name="image_upload" onChange={handleChange.bind(this)} type="file" />
                     <label for="file-upload" className="custom-file-upload">
                         Upload image
