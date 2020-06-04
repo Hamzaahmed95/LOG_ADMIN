@@ -17,6 +17,11 @@ export const CreateTeams = () => {
         else if (event.target.name === 'image_upload') {
             uploadImage(event.target.files[0])
         }
+        const result = firebase.database().ref().child('Teams')
+        //  let starCountRef = firebase.database().ref('posts/' + postId + '/starCount');
+        result.on('value', function (snapshot) {
+            console.log("values: " + snapshot.val());
+        });
     }
 
     const handleChangePlayers = index => event => {

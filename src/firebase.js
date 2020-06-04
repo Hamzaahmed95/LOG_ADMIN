@@ -7,7 +7,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 
 // TODO: Replace the following with your app's Firebase project configuration
-const firebaseConfig = {
+export const firebaseConfig = {
     apiKey: "AIzaSyDMju7iGGR0rjFoifrtYMgtlbGkTFTOhiA",
     authDomain: "log2017-2a6a1.firebaseapp.com",
     databaseURL: "https://log2017-2a6a1.firebaseio.com",

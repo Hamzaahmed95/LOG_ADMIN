@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import './App.css';
 import LiveScoringCricket from './../LiveScoring/Cricket/index';
-import {CreateTeams} from './../CreateTeams/index';
+import ShowTeams from './../ShowTeams/index';
 
-function App() {
+const App = () =>{
 
   return (
     <div className="App">
       <h1>Main App</h1>
-      <CreateTeams/>
+      <ShowTeams/>
     </div>
   );
 }
