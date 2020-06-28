@@ -15,17 +15,13 @@ export default class ShowTeams extends Component {
         }
     }
 
-
     componentDidMount() {
         const result = firebase.database().ref().child('Teams').orderByChild("players");
         let that = this;
 
-
-
         result.on('value', function (snapshot) {
             snapshot.forEach(function (userSnapshot) {
                
-                console.log("final: " + JSON.stringify(userSnapshot.val()));
                 let each_team = userSnapshot.val().players;
                 let each_logo = userSnapshot.val().image;
                 let each_team_name = userSnapshot.val().team_name;
