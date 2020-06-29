@@ -6,13 +6,15 @@ import {CreateTeams} from './../CreateTeams/index';
 import LiveScoring from './../LiveScoring/Cricket/index';
 import MOM from './../MOM/Cricket/index';
 import {CreateMOM} from './../CreateMOM/index';
+import PointsTable from './../PointsTable/index';
+import {CreatePointsTable} from './../CreatePointsTable/index';
 
 const App = () =>{
 
   return (
     <div className="App">
       <h1>Main App</h1>
-      <CreateMOM/>
+      <PointsTable/>
     </div>
   );
 }

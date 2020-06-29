@@ -8,7 +8,7 @@ export default class PointsTable extends Component {
         this.state = {
             teams: [],
             logos: [],
-            Pictures: []
+            Pictures: ''
         }
     }
 
@@ -20,7 +20,7 @@ export default class PointsTable extends Component {
             snapshot.forEach(function (userSnapshot) {
                 console.log("results: " + JSON.stringify(userSnapshot))
                 that.setState({
-                    Pictures: that.state.Pictures.concat([userSnapshot.val().picture])
+                    Pictures: userSnapshot.val().photoUrl
                 })
             });
         });
@@ -31,11 +31,9 @@ export default class PointsTable extends Component {
         return (
             <div className="MOM">
                 <h1>MOM</h1>
-                {this.state.Pictures.map(picture =>
-                    <div className="sub_teams">
-                        <img src={picture} width={500} height={310} />
-                    </div>
-                )}
+                <div className="sub_teams">
+                    <img src={this.state.Pictures} width={600} height={610} />
+                </div>
             </div>
         );
     }
