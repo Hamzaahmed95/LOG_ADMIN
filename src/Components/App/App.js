@@ -9,12 +9,13 @@ import {CreateMOM} from './../CreateMOM/index';
 import PointsTable from './../PointsTable/index';
 import {CreatePointsTable} from './../CreatePointsTable/index';
 
+import Sidebar from './../Sidebar/index';
+import LandingPage from './../LandingPage/index';
 const App = () =>{
 
   return (
     <div className="App">
-      <h1>Main App</h1>
-      <PointsTable/>
+      <LandingPage/>
     </div>
   );
 }

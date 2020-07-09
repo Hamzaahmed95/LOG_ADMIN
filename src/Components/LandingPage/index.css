@@ -1,0 +1,14 @@
+.LandingPage{
+    display: flex;
+}
+.LandingPage > .main_components{
+    flex-grow: 1;
+}
+.main_components,.sidebar{
+    background-color: #f2f2f2;
+}
+.sidebar{
+    background-color: white;
+    
+}
+

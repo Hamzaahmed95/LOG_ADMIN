@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './index.css';
 import * as firebase from 'firebase';
 
-export default class PointsTable extends Component {
+export default class MOM extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,7 +13,7 @@ export default class PointsTable extends Component {
     }
 
     componentDidMount() {
-        const result = firebase.database().ref().child('pointstable').limitToLast(1);
+        const result = firebase.database().ref().child('mom');
         let that = this;
 
         result.on('value', function (snapshot) {
