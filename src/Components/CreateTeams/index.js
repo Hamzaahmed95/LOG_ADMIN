@@ -6,7 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container'
 
-import SimpleModal from './../Modal/index';
+import {useDispatch,useSelector} from 'react-redux'
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -16,18 +16,19 @@ const useStyles = makeStyles((theme) => ({
     },
     paper: {
         padding: theme.spacing(2),
-        textAlign: 'center',
         color: theme.palette.text.secondary,
     },
 }));
 
 export const CreateTeams = () => {
     const classes = useStyles();
+    const dispatch = useDispatch()
     const [team_name, setTeam_name] = useState('');
     const [image, uploadImage] = useState('');
     const [player_name, setPlayerName] = useState([]);
     const [player_position, setPlayerPosition] = useState([]);
-
+    
+   
     const handleChange = event => {
 
         if (event.target.name === 'team_name') {
@@ -130,14 +131,13 @@ export const CreateTeams = () => {
     const positions = ['captain', 'batsman', 'bowler', 'wicketkeeper']
     return (
 
-        <div align="center" className="CreateTeams">
-            <Container maxWidth="sm">
+        <div className="CreateTeams">
                 <Grid item xs={12}>
                     <Paper className={classes.paper}>
 
 
                         <span className="heading">Create Team</span>
-                        <form onSubmit={handleSubmit.bind(this)}>
+                        <form className="forms" onSubmit={handleSubmit.bind(this)}>
                             <div>
                                 <TextField className= "textField" color='primary' required={true} fullWidth={true}  label="Team Name" type="text" name="team_name" onChange={handleChange.bind(this)} />
                             </div>
@@ -156,13 +156,12 @@ export const CreateTeams = () => {
                         </label>
                             <br />
                             
-                            <Button variant="contained" type="submit" color="primary">Submit</Button>
+                            <Button  variant="contained" type="submit" color="primary">Submit</Button>
                         </form>
                         <br />
 
                     </Paper>
                 </Grid>
-            </Container>
 
         </div >
     );

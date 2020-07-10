@@ -4,7 +4,6 @@ import LiveScoringCricket from './../LiveScoring/Cricket/index';
 import { ShowTeams } from './../ShowTeams/index';
 import { CreateTeams } from './../CreateTeams/index';
 import MOM from './../MOM/Cricket/index';
-import { CreateMOM } from './../CreateMOM/index';
 import  Navbar  from './../Navbar/index';
 
 import PointsTable from './../PointsTable/index';
@@ -21,6 +20,7 @@ const MainComponents = () => {
   const statusPointsTable = useSelector(state => state.sidebar.PointsTableSatus);
   const statusScoring = useSelector(state => state.sidebar.ScoreSatus);
   const statusMom = useSelector(state => state.sidebar.MomSatus);
+  const statusCreateTeam = useSelector(state => state.sidebar.CreateTeamStatus);
 
 
   return (
@@ -49,6 +49,10 @@ const MainComponents = () => {
       {statusMom ?
         <div>
           <MOM />
+        </div> : ''}
+        {statusCreateTeam ?
+        <div>
+          <CreateTeams />
         </div> : ''}
     </div>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css';
-import balls from './../../assets/ball_s.png'
+import flog_icon from './../../assets/flogggcopy.png'
 import home_icon from './../../assets/home.png'
 import teams_icon from './../../assets/teams.png'
 import pointstable_icon from './../../assets/pointstable.png'
@@ -50,33 +50,33 @@ const Sidebar = () => {
 
   return (
     <div className="Sidebar">
-      <img src={balls} width={130} height={130} />
+      <img src={flog_icon} width={100} height={100} />
 
       <div className="items">
-      <a style={{backgroundColor: statusHome ? '#e0e0e0' : '#ffffff', fontWeight: statusHome? 'bold':'normal'}}
+      <a style={{backgroundColor: statusHome ? '#2E4269' : '#3368d6', fontWeight: statusHome? 'bold':'normal'}}
         onClick ={handleClickHome.bind(this)}href="#" className="first">
-          <img src={statusHome? home_red_icon:home_icon} width={20} height={20} />
+          <img src={home_icon} width={20} height={20} />
           <span  style={{fontWeight: statusHome? 'bold':'normal'}}className="home_text">Home</span>
         </a>
 
-        <a style={{backgroundColor: statusTeams ? '#e0e0e0' : '#ffffff'}}
+        <a style={{backgroundColor: statusTeams ? '#2E4269' : '#3368d6'}}
         onClick ={handleClickTeams.bind(this)} href="#" >
-          <img src={statusTeams? teams_red_icon:teams_icon} width={20} height={20} />
+          <img src={teams_icon} width={20} height={20} />
           <span style={{fontWeight: statusTeams? 'bold':'normal'}} className="home_text">Teams</span>
         </a>
-        <a style={{backgroundColor: statusPointsTable ? '#e0e0e0' : '#ffffff'}}
+        <a style={{backgroundColor: statusPointsTable ? '#2E4269' : '#3368d6'}}
         onClick ={handleClickPointsTable.bind(this)} href="#" >
-          <img src={statusPointsTable? pointstable_red_icon:pointstable_icon} width={20} height={20} />
+          <img src={pointstable_icon} width={20} height={20} />
           <span style={{fontWeight: statusPointsTable? 'bold':'normal'}} className="home_text">Points Table</span>
         </a>
-        <a style={{backgroundColor: statusScoring ? '#e0e0e0' : '#ffffff'}}
+        <a style={{backgroundColor: statusScoring ? '#2E4269' : '#3368d6'}}
         onClick ={handleClickScore.bind(this)} href="#" >
-          <img src={statusScoring? scoring_red_icon:scoring_icon} width={20} height={20} />
+          <img src={scoring_icon} width={20} height={20} />
           <span style={{fontWeight: statusScoring? 'bold':'normal'}} className="home_text">Scoring</span>
         </a>
-        <a style={{backgroundColor: statusMom ? '#e0e0e0' : '#ffffff'}}
+        <a style={{backgroundColor: statusMom ? '#2E4269' : '#3368d6'}}
         onClick ={handleClickMom.bind(this)} href="#" >
-          <img src={statusMom? mom_red:mom} width={20} height={20} />
+          <img src={mom} width={20} height={20} />
           <span style={{fontWeight: statusMom? 'bold':'normal'}} className="home_text">Man of the match</span>
         </a>
 

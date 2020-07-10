@@ -17,11 +17,49 @@
     text-align: left;
 }
 .ShowTeams{
-    padding: 5% 5% 0% 5%;
+    padding: 5% 4% 0% 4%;
 }
 .line{
     border-top: 1px solid rgb(224, 223, 223,0.3);
 }   
 .hide{
     display: none;
+}
+.teamss{
+    padding: 10% 4% 0% 4%;
+}
+.playersSmall{
+    color:black;
+    font-family:  averta, "avenir w02", avenir, Helvetica, Arial, sans-serif;
+    font-size: 70%;
+    text-align: left;
+}
+.playersBig{
+    color:black;
+    font-family:  averta, "avenir w02", avenir, Helvetica, Arial, sans-serif;
+    font-size: 80%;
+    text-align: left;
+}
+.create_teams_heading{
+    color:#3369D6;
+    font-family:  averta, "avenir w02", avenir, Helvetica, Arial, sans-serif;
+    font-size: 100%;
+    font-weight: 800;
+    text-align: left;
+}
+.paper{
+    box-shadow: 0 0px 1px 0px black;
+    padding: 5%;
+}
+.bottom_line{
+    margin-top: 5%;
+    border-top: 1px solid rgb(224, 223, 223,0.3);
+}
+.CreateTeamButton{
+    background-color: #28B762 !important;
+    color: white !important;
+    font-family: averta, "avenir w02", avenir, Helvetica, Arial, sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    line-height: 24px !important;
 }

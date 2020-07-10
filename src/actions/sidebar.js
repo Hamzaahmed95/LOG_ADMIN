@@ -25,6 +25,10 @@ export const getScoreComponent = () => dispatch => {
 export const getMOMComponent = () => dispatch => {
     dispatch({
         type: 'GET_MOM'
-    })
-    
+    })   
+}
+export const getCreateTeamComponent = () => dispatch => {
+    dispatch({
+        type: 'GET_CREATE_TEAM'
+    })   
 }

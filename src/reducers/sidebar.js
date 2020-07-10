@@ -3,7 +3,8 @@ const initialState = {
   TeamSatus: false,
   PointsTableSatus: false,
   ScoreSatus: false,
-  MomSatus: false
+  MomSatus: false,
+  CreateTeamStatus: false
 }
 
 export default function (state = initialState, action) {
@@ -16,7 +17,8 @@ export default function (state = initialState, action) {
         TeamSatus: false,
         PointsTableSatus: false,
         ScoreSatus: false,
-        MomSatus: false
+        MomSatus: false,
+        CreateTeamStatus: false
       }
     case 'GET_TEAMS':
       return {
@@ -25,7 +27,8 @@ export default function (state = initialState, action) {
         TeamSatus: true,
         PointsTableSatus: false,
         ScoreSatus: false,
-        MomSatus: false
+        MomSatus: false,
+        CreateTeamStatus: false
       }
     case 'GET_POINTSTABLE':
       return {
@@ -34,7 +37,8 @@ export default function (state = initialState, action) {
         TeamSatus: false,
         PointsTableSatus: true,
         ScoreSatus: false,
-        MomSatus: false
+        MomSatus: false,
+        CreateTeamStatus: false
       }
     case 'GET_SCORE':
       return {
@@ -43,7 +47,8 @@ export default function (state = initialState, action) {
         TeamSatus: false,
         PointsTableSatus: false,
         ScoreSatus: true,
-        MomSatus: false
+        MomSatus: false,
+        CreateTeamStatus: false
       }
     case 'GET_MOM':
       return {
@@ -52,8 +57,20 @@ export default function (state = initialState, action) {
         TeamSatus: false,
         PointsTableSatus: false,
         ScoreSatus: false,
-        MomSatus: true
+        MomSatus: true,
+        CreateTeamStatus: false
       }
+      case 'GET_CREATE_TEAM':
+        return {
+          ...state,
+          HomeStatus: false,
+          TeamSatus: false,
+          PointsTableSatus: false,
+          ScoreSatus: false,
+          MomSatus: false,
+          CreateTeamStatus: true
+        }
+      
     default:
       return state;
   }
