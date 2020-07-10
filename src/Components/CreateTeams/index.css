@@ -21,11 +21,22 @@
 
   input[type="file"] {
     display: none;
-}
+}   
 .custom-file-upload {
     border: 1px solid #ccc;
     display: inline-block;
     padding: 6px 12px;
     margin: 5px;
     cursor: pointer;
+}
+.heading{
+    font-family: Circular, -apple-system, system-ui, Roboto, "Helvetica Neue", sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    color: #222222;
+    line-height: 20px;
+}
+.textField{
+    font-family: Circular, -apple-system, system-ui, Roboto, "Helvetica Neue", sans-serif !important;
 }

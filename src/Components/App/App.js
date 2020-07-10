@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 
 import LandingPage from './../LandingPage/index';
+import {CreateTeams} from './../CreateTeams/index';
 
 import store from '../../store'
 import { Provider } from 'react-redux';

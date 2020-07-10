@@ -1,4 +1,27 @@
 .teams{
     display: flex;
-    justify-content: center;
+    justify-content: left;
+    text-align: left;
+
+}
+.teams > div{
+    padding-left: 1%;
+}
+.sub_teams{
+    width: 100%;
+}
+.players{
+    color:black;
+    font-family:  averta, "avenir w02", avenir, Helvetica, Arial, sans-serif;
+   
+    text-align: left;
+}
+.ShowTeams{
+    padding: 5% 5% 0% 5%;
+}
+.line{
+    border-top: 1px solid rgb(224, 223, 223,0.3);
+}   
+.hide{
+    display: none;
 }

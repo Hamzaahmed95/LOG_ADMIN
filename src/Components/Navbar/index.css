@@ -1,0 +1,38 @@
+.Navbar{
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    justify-content: space-between;
+    box-shadow: 0 4px 2px -2px gray;
+}
+
+.button1{
+   
+    padding-top:2.3% ;
+    padding-bottom:2.3% ;
+    padding-left:4.5% ;
+}
+.button2{
+    display: flex;
+    width: 17%;
+    padding-top:2.3% ;
+    padding-bottom:2.3% ;
+    padding-right:4.5% ;
+    justify-content: space-around;
+}
+.headings{
+    font-family: averta, "avenir w02", avenir, Helvetica, Arial, sans-serif;
+    font-size: 110%;
+    color:rgb(187, 0, 0);
+    font-weight: 700;
+
+}
+.heading2s{
+    font-family: averta, "avenir w02", avenir, Helvetica, Arial, sans-serif;
+    font-size: 80%;
+    font-weight: 400;
+
+}
+.profile_icon{
+    padding-left: 8%;
+}

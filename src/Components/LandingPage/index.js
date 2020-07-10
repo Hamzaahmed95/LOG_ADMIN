@@ -12,7 +12,10 @@ const LandingPage = () => {
       <div className="sidebar">
         <Sidebar />
       </div>
-      <MainComponents />
+      <div className="main_components">
+        <MainComponents />
+      </div>
+
     </div>
   );
 }

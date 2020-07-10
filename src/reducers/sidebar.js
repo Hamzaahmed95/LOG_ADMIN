@@ -9,7 +9,7 @@ const initialState = {
 export default function (state = initialState, action) {
 
   switch (action.type) {
-    case 'Get_Home':
+    case 'GET_HOME':
       return {
         ...state,
         HomeStatus: true,
@@ -18,7 +18,7 @@ export default function (state = initialState, action) {
         ScoreSatus: false,
         MomSatus: false
       }
-    case 'Get_Teams':
+    case 'GET_TEAMS':
       return {
         ...state,
         HomeStatus: false,
@@ -27,7 +27,7 @@ export default function (state = initialState, action) {
         ScoreSatus: false,
         MomSatus: false
       }
-    case 'Get_PointsTable':
+    case 'GET_POINTSTABLE':
       return {
         ...state,
         HomeStatus: false,
@@ -36,7 +36,7 @@ export default function (state = initialState, action) {
         ScoreSatus: false,
         MomSatus: false
       }
-    case 'Get_Score':
+    case 'GET_SCORE':
       return {
         ...state,
         HomeStatus: false,
@@ -45,7 +45,7 @@ export default function (state = initialState, action) {
         ScoreSatus: true,
         MomSatus: false
       }
-    case 'Get_Mom':
+    case 'GET_MOM':
       return {
         ...state,
         HomeStatus: false,

@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import './index.css';
 import LiveScoringCricket from './../LiveScoring/Cricket/index';
-import ShowTeams from './../ShowTeams/index';
+import { ShowTeams } from './../ShowTeams/index';
 import { CreateTeams } from './../CreateTeams/index';
 import MOM from './../MOM/Cricket/index';
 import { CreateMOM } from './../CreateMOM/index';
+import  Navbar  from './../Navbar/index';
+
 import PointsTable from './../PointsTable/index';
 import { CreatePointsTable } from './../CreatePointsTable/index';
 import { Home } from './../Home/index';
 
-import { useSelector } from 'react-redux'
+
+import { useDispatch, useSelector } from 'react-redux'
 
 const MainComponents = () => {
 
@@ -19,9 +22,10 @@ const MainComponents = () => {
   const statusScoring = useSelector(state => state.sidebar.ScoreSatus);
   const statusMom = useSelector(state => state.sidebar.MomSatus);
 
+
   return (
-    <div className="App">
-      <h1>MainComponents</h1>
+    <div className="MainComponents">
+      <Navbar/>
       {statusHome ?
         <div >
           <Home />

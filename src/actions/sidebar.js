@@ -1,30 +1,30 @@
 export const getHomeComponent = () => dispatch => {
     dispatch({
-        type: 'Get_Home'
+        type: 'GET_HOME'
     })
     
 }
 export const getTeamsComponent = () => dispatch => {
     dispatch({
-        type: 'Get_Teams'
+        type: 'GET_TEAMS'
     })
     
 }
 export const getPointsTableComponent = () => dispatch => {
     dispatch({
-        type: 'Get_PointsTable'
+        type: 'GET_POINTSTABLE'
     })
     
 }
 export const getScoreComponent = () => dispatch => {
     dispatch({
-        type: 'Get_Score'
+        type: 'GET_SCORE'
     })
     
 }
 export const getMOMComponent = () => dispatch => {
     dispatch({
-        type: 'Get_Mom'
+        type: 'GET_MOM'
     })
     
 }

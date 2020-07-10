@@ -9,6 +9,7 @@
 }
 .sidebar{
     background-color: white;
+    position: inherit;
     
 }
 

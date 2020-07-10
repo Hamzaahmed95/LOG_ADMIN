@@ -2,15 +2,34 @@ import React, { useState } from 'react';
 import './index.css';
 import { Button, TextField, Select, MenuItem } from '@material-ui/core';
 import * as firebase from 'firebase';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container'
+
+import SimpleModal from './../Modal/index';
+
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+    },
+    paper: {
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+    },
+}));
 
 export const CreateTeams = () => {
-
+    const classes = useStyles();
     const [team_name, setTeam_name] = useState('');
     const [image, uploadImage] = useState('');
     const [player_name, setPlayerName] = useState([]);
     const [player_position, setPlayerPosition] = useState([]);
 
     const handleChange = event => {
+
         if (event.target.name === 'team_name') {
             setTeam_name(event.target.value)
         }
@@ -23,6 +42,8 @@ export const CreateTeams = () => {
             console.log("values: " + snapshot.val());
         });
     }
+
+
 
     const handleChangePlayers = index => event => {
 
@@ -100,6 +121,8 @@ export const CreateTeams = () => {
                     const result = firebase.database().ref().child('Teams').push(Team);
                     result.then((resolve) => {
                         console.log(resolve)
+                    }).catch((reject) =>{
+                        console.log(reject)
                     })
                 });
             });
@@ -108,31 +131,40 @@ export const CreateTeams = () => {
     return (
 
         <div align="center" className="CreateTeams">
-            <div className="container">
-                <h3>Create Team</h3>
-                <form onSubmit={handleSubmit.bind(this)}>
-                    <div>
-                        <TextField color='primary' required={true} fullWidth={true} id="standard-basic" label="Team Name" type="text" name="team_name" onChange={handleChange.bind(this)} />
-                    </div>
-                    {Array.apply(null, Array(11)).map((player, index) =>
-                        <div className="create_team_form">
+            <Container maxWidth="sm">
+                <Grid item xs={12}>
+                    <Paper className={classes.paper}>
 
-                            <TextField color='primary' required={true} fullWidth={true} id="standard-basic" label="name" type="text" name="player_name" onChange={handleChangePlayers(index).bind(this)} />
-                            <Select fullWidth={true} id="standard-basic" name="player_position" onChange={handleChangePlayers(index).bind(this)} >
-                                {positions.map(position => (<MenuItem value={position}>{position}</MenuItem>))}
-                            </Select>
-                        </div>
-                    )}
-                    <input id="file-upload" name="image_upload" onChange={handleChange.bind(this)} type="file" />
-                    <label for="file-upload" className="custom-file-upload">
-                        Upload image
+
+                        <span className="heading">Create Team</span>
+                        <form onSubmit={handleSubmit.bind(this)}>
+                            <div>
+                                <TextField className= "textField" color='primary' required={true} fullWidth={true}  label="Team Name" type="text" name="team_name" onChange={handleChange.bind(this)} />
+                            </div>
+                            {Array.apply(null, Array(11)).map((player, index) =>
+                                <div className="create_team_form">
+
+                                    <TextField color='primary' required={true} fullWidth={true} id="standard-basic" label="name" type="text" name="player_name" onChange={handleChangePlayers(index).bind(this)} />
+                                    <Select fullWidth={true} id="standard-basic" name="player_position" onChange={handleChangePlayers(index).bind(this)} >
+                                        {positions.map(position => (<MenuItem value={position}>{position}</MenuItem>))}
+                                    </Select>
+                                </div>
+                            )}
+                            <input id="file-upload" name="image_upload" onChange={handleChange.bind(this)} type="file" />
+                            <label for="file-upload" className="custom-file-upload">
+                                Upload image
                         </label>
-                    <br />
-                    <Button variant="contained" type="submit" color="primary">Submit</Button>
-                </form>
-                <br />
-            </div>
-        </div>
+                            <br />
+                            
+                            <Button variant="contained" type="submit" color="primary">Submit</Button>
+                        </form>
+                        <br />
+
+                    </Paper>
+                </Grid>
+            </Container>
+
+        </div >
     );
 }
 
