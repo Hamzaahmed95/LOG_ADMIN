@@ -1,41 +1,25 @@
 import React, { Component } from 'react';
 import './index.css';
 import * as firebase from 'firebase';
+import { useSelector } from 'react-redux'
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 
-export default class PointsTable extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            teams: [],
-            logos: [],
-            Pictures: ''
-        }
-    }
 
-    componentDidMount() {
-        const result = firebase.database().ref().child('pointstable').limitToLast(1);
-        let that = this;
-
-        result.on('value', function (snapshot) {
-            snapshot.forEach(function (userSnapshot) {
-                console.log("results: " + JSON.stringify(userSnapshot))
-                that.setState({
-                    Pictures: userSnapshot.val().photoUrl
-                })
-            });
-        });
-    }
-
-    render() {
-
+export const PointsTable = () => {
+    const Pictures = useSelector(state => state.points_table.Pictures);
+ 
         return (
             <div className="MOM">
-                <h1>MOM</h1>
-                <div className="sub_teams">
-                    <img src={this.state.Pictures} width={600} height={610} />
-                </div>
+                <Grid item xs={12}>
+                    <Paper className="s">
+                        <div className="sub_teams">
+                            <img src={Pictures} width={400} height={420} />
+                        </div>
+                    </Paper>
+
+                </Grid>
             </div>
         );
-    }
 }
 

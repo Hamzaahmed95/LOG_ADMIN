@@ -3,10 +3,10 @@ import './index.css';
 import LiveScoringCricket from './../LiveScoring/Cricket/index';
 import { ShowTeams } from './../ShowTeams/index';
 import { CreateTeams } from './../CreateTeams/index';
-import MOM from './../MOM/Cricket/index';
+import {MOM} from './../MOM/Cricket/index';
 import  Navbar  from './../Navbar/index';
 
-import PointsTable from './../PointsTable/index';
+import {PointsTable} from './../PointsTable/index';
 import { CreatePointsTable } from './../CreatePointsTable/index';
 import { Home } from './../Home/index';
 

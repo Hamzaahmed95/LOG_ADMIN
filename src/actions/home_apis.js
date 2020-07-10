@@ -2,7 +2,7 @@
 import * as firebase from 'firebase';
 import { firebaseConfig } from '../firebase';
 
-export const getAllTeams= () => dispatch => {
+export const getAllTeams = () => dispatch => {
     const result = firebase.database().ref().child('Teams').orderByChild("players");
     let teamObject = [];
     result.on('value', function (snapshot) {
@@ -18,7 +18,7 @@ export const getAllTeams= () => dispatch => {
             }
 
             teamObject = teamObject.concat([team])
-            console.log("TEAMSOBJECT: "+teamObject)
+            console.log("TEAMSOBJECT: " + teamObject)
         })
         dispatch({
             type: 'GET_ALL_TEAMS',

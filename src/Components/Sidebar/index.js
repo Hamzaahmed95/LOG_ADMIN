@@ -18,6 +18,8 @@ import {useDispatch,useSelector} from 'react-redux'
 import { getHomeComponent,getTeamsComponent,getPointsTableComponent,getScoreComponent,getMOMComponent } from '../../actions/sidebar';
 
 import { getAllTeams } from '../../actions/home_apis';
+import { getPointsTable} from '../../actions/points_table';
+import { getMOM} from '../../actions/mom';
 const Sidebar = () => {
 
   const dispatch = useDispatch()
@@ -45,6 +47,8 @@ const Sidebar = () => {
     dispatch(getMOMComponent())
   }
   dispatch(getAllTeams())
+  dispatch(getPointsTable())
+  dispatch(getMOM())
   
 
 

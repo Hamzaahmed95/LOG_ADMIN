@@ -1,43 +1,30 @@
 import React, { Component } from 'react';
 import './index.css';
-import * as firebase from 'firebase';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import { useSelector } from 'react-redux'
 
-export default class MOM extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            teams: [],
-            logos: [],
-            Pictures: []
-        }
-    }
 
-    componentDidMount() {
-        const result = firebase.database().ref().child('mom');
-        let that = this;
+export const MOM = () => {
+    const Pictures = useSelector(state => state.mom.Pictures);
 
-        result.on('value', function (snapshot) {
-            snapshot.forEach(function (userSnapshot) {
-                console.log("results: " + JSON.stringify(userSnapshot))
-                that.setState({
-                    Pictures: that.state.Pictures.concat([userSnapshot.val().picture])
-                })
-            });
-        });
-    }
+    return (
+        <div className="MOM">
+            <Grid item xs={12}>
+                <Paper className="s">
+                    {Pictures.map(picture =>
+                        <div className="sub_teams">
+                            <img src={picture} width={500} height={310} />
+                        </div>
+                    )}
+                </Paper>
 
-    render() {
-
-        return (
-            <div className="MOM">
-                <h1>MOM</h1>
-                {this.state.Pictures.map(picture =>
-                    <div className="sub_teams">
-                        <img src={picture} width={500} height={310} />
-                    </div>
-                )}
-            </div>
-        );
-    }
+            </Grid>
+        </div>
+    );
 }
+
+
+
+
 
